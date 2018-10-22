@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1054353293703510}
+  m_IsPrefabParent: 1
+--- !u!1 &1054353293703510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4281622773893750}
+  - component: {fileID: 68430078245828428}
+  m_Layer: 0
+  m_Name: swordCollider
+  m_TagString: sword
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4281622773893750
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054353293703510}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &68430078245828428
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054353293703510}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 3.4616623, y: -0.40774298}
+  - {x: 3.4955368, y: 0.47058535}
+  - {x: 3.4051895, y: 1.060049}
+  - {x: 2.9306526, y: 1.4743729}
+  - {x: 2.113285, y: 1.981123}
+  - {x: 0.64853287, y: 2.0733485}
+  - {x: -0.10400009, y: 2.0501275}
+  - {x: -0.07463074, y: 0.46764088}
+  - {x: -0.054344177, y: -2.8199105}
+  - {x: 1.5313263, y: -2.775951}
+  - {x: 2.4063911, y: -2.1967096}
+  - {x: 2.9140244, y: -1.6695938}
+  - {x: 3.2994843, y: -1.0273471}
+  - {x: 3.4563446, y: -0.29112673}

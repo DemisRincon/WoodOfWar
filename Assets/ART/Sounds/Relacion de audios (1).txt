@@ -1,0 +1,17 @@
+Autor		Tipo de licencia	Archivo			Archivo actual
+Fantozzi  	cc0			Fantozzi-SandL1		Paso izquierdo doran
+Fantozzi  	cc0			Fantozzi-SandR1		Paso derecho doran
+artisticdude	cc0			gigant(n)		Boss1-n
+artisticdude	cc0			mnstr(n)		mnstr(n)
+artisticdude	cc0			ogre(n)			ogre(n)
+artisticdude	cc0			swing(n)	 	swing(n)
+spookymodem	CC-BY 3.0		Bottle Break		Bottle Break
+remaxim		cc0			generic melee weapon 	generic melee weapon
+remaxim		cc0			sword attack sound	sword attack sound
+remaxim		cc0			animal melee sound	animal melee sound
+Till Behrend	cc0			glass_breaking		glass_breaking
+marcelofg55	CC-BY 3.0		Metal Hit		Metal Hit
+MentalSanityOff	CC0			jumpland		jumpland
+qubodup		CC0			rustle(n)		rustle(n)
+qubodup		CC0			timehitwind		timehitwind
+Vinrax		CC-BY 3.0		key_pickup		key_pickup
