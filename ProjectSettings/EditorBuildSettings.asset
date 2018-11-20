@@ -16,16 +16,37 @@ EditorBuildSettings:
     guid: 7ee07c27a6e159b4cb3e5cf3c3faaf7c
   - enabled: 1
     path: Assets/Scenes/Zona 4 tutorial.unity
-    guid: c5969c250c46f4ad1a047501a2f33cd1
+    guid: 6b682dc95674ada42b48918a4d00fa3b
+  - enabled: 1
+    path: Assets/Scenes/Zona 5 LatonBoss.unity
+    guid: 936b68c499dec2d4581d2d6360756e02
+  - enabled: 1
+    path: Assets/Scenes/Zona 6 N.unity
+    guid: 7584825cf56d9364d8267834fd853d09
+  - enabled: 1
+    path: Assets/Scenes/Zona 7 GlassBoss.unity
+    guid: b3642558ae056d34683efd2f887ef6ae
+  - enabled: 1
+    path: Assets/Scenes/Zona 8.unity
+    guid: 2b1427c20a5b2ae4cb001cc2db78490c
+  - enabled: 1
+    path: Assets/Scenes/Zona 9 PlasticBoss.unity
+    guid: 16e7a596465954d4f86f762e4123ba74
+  - enabled: 1
+    path: Assets/Scenes/Zona 10.unity
+    guid: 93d5ced237d2f6b46b285931d5805b0f
+  - enabled: 1
+    path: Assets/Scenes/Zona 11 FinalBoss.unity
+    guid: 72fb5ec33cb979c408a879ec8b69e940
   - enabled: 0
-    path: Assets/Scenes/Zona 5.unity
-    guid: 3ffd21d4d1fb44a1e8b16a9718f88cf8
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Zona 6.unity
-    guid: 8ba459079bc5c4a1db0d1becab2f1431
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Zona 7.unity
-    guid: b8fb1086e58274b53845ba63d9b4f4e1
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

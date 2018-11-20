@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 114444599034084544}
   - component: {fileID: 61027672760991902}
   - component: {fileID: 50161425099760178}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Sight
   m_TagString: latonBoss
   m_Icon: {fileID: 0}
@@ -434,8 +434,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seedPos: {fileID: 4627860091214600}
-  seedPos2: {fileID: 4025369685358236}
-  seedPos3: {fileID: 4031698117139356}
   movementSpeed: 10
   seed: {fileID: 1928886115300732, guid: 69933dc460f106b46a20d94bcd378ad7, type: 2}
   seed2: {fileID: 1928886115300732, guid: 69933dc460f106b46a20d94bcd378ad7, type: 2}
@@ -452,9 +450,13 @@ MonoBehaviour:
   - Hit
   - sword
   - hSlayer
+  dropEmemyCan: {fileID: 0}
+  dropEnemyBottle: {fileID: 0}
+  dropEnemyBag: {fileID: 0}
   meleeRange: 15
   throwRange: 25
   inmortalTime: 5
+  collisionador: {fileID: 0}
 --- !u!114 &114086243798585878
 MonoBehaviour:
   m_ObjectHideFlags: 1

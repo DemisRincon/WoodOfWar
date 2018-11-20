@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Enemy : Character
@@ -30,6 +30,9 @@ public class Enemy : Character
 
     [SerializeField]
     private float inmortalTime;
+
+    public GameObject transitionSceneMap;
+    public GameObject transitionScene;
 
     public Rigidbody2D MyRigidbody { get; set; }
 
@@ -111,8 +114,6 @@ public class Enemy : Character
                 Debug.Log("semilla lanzada");
                 time = 0;
                 GameObject tmp = Instantiate(dropEmemyCan, seedPos.position, Quaternion.identity);
-
-
             }
         }
         if (gameObject.tag == "humanBoss")
@@ -234,11 +235,11 @@ public class Enemy : Character
 
             if ((GetDirection().x > 0 /*&& transform.position.x < rightEdge.position.x*/) || (GetDirection().x < 0 /*&& transform.position.x > leftEdge.position.x*/))
             {
-                if (this.gameObject.tag == "enemyBag") //Activar estas opciones y cambiar el nomnbre del tag para el enemigo que cambia de tamaño
-                {
-                    advancingCollider = GetComponent<BoxCollider2D>();
-                    advancingCollider.size = new Vector2(2, 3);
-                }
+                //if (this.gameObject.tag == "enemyBag") //Activar estas opciones y cambiar el nomnbre del tag para el enemigo que cambia de tamaño
+                //{
+                //    advancingCollider = GetComponent<BoxCollider2D>();
+                //    advancingCollider.size = new Vector2(2, 3);
+                //}
 
                 //Pone la velocidad del jugador en 1
                 MyAnimatior.SetFloat("speed", 1);
@@ -249,30 +250,30 @@ public class Enemy : Character
             //Si está en estado de caminata (patrol), y llega al edge, entonces cambiará de dirección
             else if (currentState is PatrolState)
             {
-                if (this.gameObject.tag == "enemyBag")
-                {
-                    advancingCollider.size = new Vector2(2, 5);
-                }
+                //if (this.gameObject.tag == "enemyBag")
+                //{
+                //    advancingCollider.size = new Vector2(2, 5);
+                //}
                 //ChangeDirection();
                 ChangeState(new IdleState());
             }
             else if (currentState is RangedState)
             {
-                if (this.gameObject.tag == "enemyBag")
-                {
-                    advancingCollider.size = new Vector2(2, 5);
-                }
+                //if (this.gameObject.tag == "enemyBag")
+                //{
+                //    advancingCollider.size = new Vector2(2, 5);
+                //}
                 Target = null;
                 ChangeState(new IdleState());
             }
         }
-        else
-        {
-            if (this.gameObject.tag == "enemyBag")
-            {
-                advancingCollider.size = new Vector2(2, 5);
-            }
-        }
+        //else
+        //{
+        //    if (this.gameObject.tag == "enemyBag")
+        //    {
+        //        advancingCollider.size = new Vector2(2, 5);
+        //    }
+        //}
 
     }
     /// <summary>
@@ -325,12 +326,12 @@ public class Enemy : Character
             {
                 ChangeDirection();
             }
-                 
-            if (this.gameObject.tag == "enemyBag")
-            {
-                advancingCollider.size = new Vector2(2, 5);
-            }
-            
+
+            //if (this.gameObject.tag == "enemyBag")
+            //{
+            //    advancingCollider.size = new Vector2(2, 5);
+            //}
+
         }
     }
 
@@ -369,6 +370,18 @@ public class Enemy : Character
 
                 if (this.gameObject.tag == "latonBoss" || this.gameObject.tag == "humanBoss")
                 {
+                    if (this.gameObject.name == "bossCan")
+                    {
+                        SoundManager.PlaySound("canDamaged");
+                    }
+                    if (this.gameObject.name == "bossGlass")
+                    {
+                        SoundManager.PlaySound("glassDamaged");
+                    }
+                    if (this.gameObject.name == "bossPlastic")
+                    {
+                        SoundManager.PlaySound("plasticDamaged");
+                    }
                     inmortal = true;
 
                     StartCoroutine(IndicateInmortal());
@@ -383,6 +396,40 @@ public class Enemy : Character
                 MyRigidbody.velocity = Vector2.zero;
                 MyAnimatior.SetTrigger("die");
                 //collisionador.gameObject.SetActive(true);
+                if (gameObject.tag == "glassEnemy")
+                {
+                    SoundManager.PlaySound("bottleDeath");
+                }
+                else if (gameObject.tag == "Enemy")
+                {
+                    SoundManager.PlaySound("canDeath");
+                }
+                else if (gameObject.tag == "enemyBag")
+                {
+                    SoundManager.PlaySound("bagDeath");
+                }
+
+                if (this.gameObject.tag == "latonBoss" || this.gameObject.tag == "humanBoss")
+                {
+                    GameObject Player;
+                    Player = GameObject.FindGameObjectWithTag("Player");
+                    Player.SetActive(false);
+                    yield return new WaitForSeconds(4);
+                    if (SaveMananger.Instance.modeConsult())
+                    {
+                        transitionScene.SetActive(true);
+
+                        //noMap.SetActive(true);
+                    }
+                    else
+                    {
+                        transitionSceneMap.SetActive(true);
+                    }
+                    SaveMananger.Instance.scenePassed();
+                    SaveMananger.Instance.saveItems(GameManager.Instance.CollectedCans, GameManager.Instance.CollectedBottles, GameManager.Instance.CollectedBags);
+
+                }
+
                 yield return null;
             }
         }
@@ -399,8 +446,8 @@ public class Enemy : Character
     public override void Death()
     {
         if (this.gameObject.tag == "Enemy" || this.gameObject.tag == "glassEnemy" || this.gameObject.tag == "enemyBag")
-        {
-            Destroy(gameObject);
+        {            
+                Destroy(gameObject);
             if (dropItem)//El objeto collectable se asigna en el gamemanager, ahí se añade el prefab correspondiente
             {
                 //Referencia al objeto collectable
@@ -413,9 +460,9 @@ public class Enemy : Character
                 }
 
                 else if (gameObject.tag == "glassEnemy")
-                {
+                {                    
                     GameObject collectable = (GameObject)Instantiate(GameManager.Instance.CollectableBottles, new Vector3(transform.position.x, transform.position.y - 2), Quaternion.identity);
-
+                    
                     Physics2D.IgnoreCollision(collectable.GetComponent<Collider2D>(), GetComponent<Collider2D>());
                     dropItem = false;
                 }

@@ -7,6 +7,8 @@ public class SaveTrigger : MonoBehaviour {
     [SerializeField]
     public GameObject panelPlayer;
     [SerializeField]
+    public GameObject loadingScreenMap;
+    [SerializeField]
     public GameObject loadingScreen;
     [SerializeField]
     public GameObject player;
@@ -14,8 +16,16 @@ public class SaveTrigger : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {   
         panelPlayer.SetActive(false);
-        loadingScreen.SetActive(true);
-        
+
+        if (SaveMananger.Instance.modeConsult())
+        {
+            loadingScreen.SetActive(true);
+        }
+        else
+        {
+            loadingScreenMap.SetActive(true);
+        }
+       
         SaveMananger.Instance.scenePassed();
         SaveMananger.Instance.saveItems(GameManager.Instance.CollectedCans, GameManager.Instance.CollectedBottles, GameManager.Instance.CollectedBags);
         

@@ -139,7 +139,7 @@ public class Player : Character
 
                 Flip(horizontal);   // 16 llamomos la funcion y le enviamos los valores de hacia que lado nos movemos
             }
-
+            
             HandleLayers(); // 58 llama a el cambio layer todo el tiempo pero despues de tener la oportunidad de ver si saltó haber asaltado
         }
     }
@@ -156,7 +156,7 @@ public class Player : Character
     {
         if (IsFalling)
         {
-            gameObject.layer = 12;///////verificar layer, la 11 sí es la de player
+            gameObject.layer = 11;///////verificar layer, la 11 sí es la de player
             MyAnimatior.SetBool("land", true);
         }
         if (!Attack && (OnGround || airControl))
@@ -166,6 +166,7 @@ public class Player : Character
         if (Jump && MyRigidbody.velocity.y == 0)
         {
             MyRigidbody.AddForce(new Vector2(0, jumpforce));
+            SoundManager.PlaySound("jump");
         }
 
 
@@ -186,6 +187,7 @@ public class Player : Character
         if (Input.GetButtonDown("Jump") && !IsFalling) // 52 si la tecla de espacio esta presionada
         {
             MyAnimatior.SetTrigger("jump");
+            SoundManager.PlaySound("jump");
         }
         if (Input.GetButtonDown("Throw"))
         {
@@ -198,8 +200,8 @@ public class Player : Character
             if (canThrow)
             {
                 canThrow = false;
-                MyAnimatior.SetTrigger("throw");
-                SoundManager.PlaySound("playerHit");
+                MyAnimatior.SetTrigger("throw"); 
+                SoundManager.PlaySound("seed");                
             }
             //MyAnimatior.SetTrigger("throw");
             //SoundManager.PlaySound("playerHit");
@@ -211,6 +213,7 @@ public class Player : Character
                 if (SaveMananger.Instance.isWeaponOwned(0)) // revisa si se tiene adquirida la espada de cristal
                 {
                     MyAnimatior.SetTrigger("swordAttack");
+                    SoundManager.PlaySound("cristalSword");
                 }
                 else                                        // si aun no tiene la espada, entonces solo realiza un golpe
                 {
@@ -222,7 +225,7 @@ public class Player : Character
             {
                 MyAnimatior.SetTrigger("attack");
                 SoundManager.PlaySound("playerHit");
-                throw;
+                //throw;
             }
             
             
@@ -245,7 +248,7 @@ public class Player : Character
             {
                 MyAnimatior.SetTrigger("attack");
                 SoundManager.PlaySound("playerHit");
-                throw;
+                //throw;
             }
    
         }
@@ -380,16 +383,27 @@ public class Player : Character
         }
      
     }
+
+    public void leftStep()
+    {
+        SoundManager.PlaySound("leftStep");
+    }
+
+    public void rightStep()
+    {
+        SoundManager.PlaySound("rightStep");
+    }
     /*
    
     }*/
-    
+
     public void BtnJump()
     {
         if (!IsFalling)
         {
             MyAnimatior.SetTrigger("jump");
-            Jump = true;
+            SoundManager.PlaySound("jump");
+            //Jump = true;
         }
 
     }
@@ -397,16 +411,19 @@ public class Player : Character
     public void BtnAttack()
     {
         MyAnimatior.SetTrigger("attack");
+        SoundManager.PlaySound("playerHit");
     }
 
     public void BtnHSlayer()
     {
         MyAnimatior.SetTrigger("hSlayerAttack");
+        SoundManager.PlaySound("hSlayerSword");
     }
 
     public void BtnSword()
     {
         MyAnimatior.SetTrigger("swordAttack");
+        SoundManager.PlaySound("cristalSword");
     }
 
     public void BtnThrow()
@@ -420,6 +437,7 @@ public class Player : Character
         {
             canThrow = false;
             MyAnimatior.SetTrigger("throw");
+            SoundManager.PlaySound("seed");
         }
         //MyAnimatior.SetTrigger("throw");
     }

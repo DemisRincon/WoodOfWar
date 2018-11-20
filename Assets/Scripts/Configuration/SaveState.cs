@@ -6,7 +6,7 @@
     private int completedLevel = 3;
     public int swordOwned = 0;
     private bool staticMode = false;
-
+    
     public bool StaticMode
     {
         get

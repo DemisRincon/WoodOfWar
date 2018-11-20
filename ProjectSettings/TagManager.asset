@@ -24,6 +24,9 @@ TagManager:
   - gameOver
   - GOAL
   - sliding
+  - LoadingScreenMenu
+  - LoadingScreenMap
+  - LoadingScreenReload
   layers:
   - Default
   - TransparentFX
